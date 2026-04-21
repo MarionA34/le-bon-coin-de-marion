@@ -1,0 +1,47 @@
+@import './base.css';
+
+:root {
+  --orange: #ec5a13;
+  --orange-pale: #ffe9de;
+  --black: #152233;
+  --grey: #627c93;
+  --grey-med: #e6eaee;
+  --grey-light: #f4f9fe;
+  --blue-dark: #094171;
+  --brown: #89380f;
+  --header-height: 110px;
+  --footer-height: 80px;
+  --green: green;
+}
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  color: var(--black);
+}
+
+main {
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+  /* -- Bonus 1 - Pour que le 'main' soit toujours sous le 'header' qui est maintenant en position 'fixed' en haut de l'écran */
+  margin-top: var(--header-height);
+}
+
+.container {
+  max-width: 1050px;
+  margin: 0 auto;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+input {
+  outline: none;
+}
