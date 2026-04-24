@@ -81,8 +81,8 @@ const changeValue = (event) => {
 
         <div class="rightPart">
           <div v-if="GlobalStore.userInfos.value.username">
-            <div class="connection">
-              <router-link :to="{ name: 'profile' }">
+            <div>
+              <router-link :to="{ name: 'profile' }" class="connection">
                 <font-awesome-icon :icon="['far', 'user']" />
                 <p>{{ GlobalStore.userInfos.value.username }}</p></router-link
               >
@@ -214,6 +214,7 @@ form button {
 .rightPart > div {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 30px;
   height: 100%;
   font-size: 16px;
@@ -222,7 +223,7 @@ form button {
   cursor: pointer;
   color: var(--grey);
 }
-.connection > a {
+.connection {
   height: 100%;
   display: flex;
   flex-direction: column;
