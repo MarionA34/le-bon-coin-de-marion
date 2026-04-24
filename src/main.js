@@ -32,7 +32,8 @@ import {
   faAngleRight,
   faAngleLeft,
   faCameraAlt,
-  faCheck
+  faCheck,
+  faTrash
 } from '@fortawesome/free-solid-svg-icons'
 
 // Ajout de l'icône à la bibliothèque
@@ -53,6 +54,7 @@ library.add(
   faAngleLeft,
   faCameraAlt,
   faCheck,
+  faTrash,
   faArrowLeft
 )
 

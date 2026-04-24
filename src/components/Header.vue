@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink } from 'vue-router'
-import { inject, ref } from 'vue'
+import { inject, ref, watchEffect } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 import BtnPublishOffer from './BtnPublishOffer.vue'
@@ -41,6 +41,13 @@ const handleSearch = () => {
   // On navigue vers la route actuelle avec les query mises à jour
   router.push({ name: 'home', query: queries })
 }
+const changeValue = (event) => {
+  if (event.target.value === '') {
+    const queries = { ...route.query }
+    delete queries.title
+    router.push({ name: 'home', query: queries })
+  }
+}
 </script>
 
 <template>
@@ -62,6 +69,7 @@ const handleSearch = () => {
               id="search"
               placeholder="Rechercher sur leboncoin"
               v-model="searchText"
+              @input="changeValue"
             />
 
             <!-- Ajout d'un bouton pour la soumission du formulaire -->
@@ -74,8 +82,10 @@ const handleSearch = () => {
         <div class="rightPart">
           <div v-if="GlobalStore.userInfos.value.username">
             <div class="connection">
-              <font-awesome-icon :icon="['far', 'user']" />
-              <p>{{ GlobalStore.userInfos.value.username }}</p>
+              <router-link :to="{ name: 'profile' }">
+                <font-awesome-icon :icon="['far', 'user']" />
+                <p>{{ GlobalStore.userInfos.value.username }}</p></router-link
+              >
             </div>
 
             <div>
@@ -212,13 +222,14 @@ form button {
   cursor: pointer;
   color: var(--grey);
 }
-.connection {
+.connection > a {
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
   border: none;
+  gap: 5px;
   background-color: #ffffff00;
 }
 /* -- BOTTOM BLOC ---------------- */
